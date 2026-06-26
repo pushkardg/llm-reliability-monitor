@@ -1,0 +1,8 @@
+torch>=2.1.0
+transformers>=4.40.0
+sentence-transformers>=2.6.0
+bert-score>=0.3.13
+scipy>=1.11.0
+numpy>=1.24.0
+pandas>=2.0.0
+accelerate>=0.27.0

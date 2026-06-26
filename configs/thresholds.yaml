@@ -1,0 +1,33 @@
+# Alert and rollback thresholds for each SDI and baseline detector.
+#
+# These are the defaults used in the paper's experiments.
+# Override via --thresholds-file in run_experiment.py / run_canary_rollback.py
+# if you want to sweep thresholds for the ablation study.
+#
+# Threshold semantics:
+#   SDIs:      alert fires when metric crosses threshold in the ALERT direction
+#   Baselines: alert fires when metric exceeds threshold
+
+sdi:
+  scd:
+    alert_above: 0.08       # cosine distance; 0 = identical centroid
+    rollback_above: 0.15
+  rtci:
+    alert_below: 0.85       # consistency index; 1 = fully consistent
+    rollback_below: 0.70
+  gas:
+    alert_below: 0.75       # adherence score; 1 = fully aligned
+    rollback_below: 0.60
+  ctc:
+    alert_below: 0.80       # cross-turn coherence; 1 = fully coherent
+    rollback_below: 0.65
+
+baselines:
+  error_rate:
+    alert_above: 0.01       # fraction of requests
+  p95_latency_s:
+    alert_above: 10.0       # seconds
+  bertscore_f1:
+    alert_below: 0.75       # BERTScore F1 vs reference set
+  adwin:
+    delta: 0.002            # ADWIN sensitivity parameter
